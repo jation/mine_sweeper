@@ -1,0 +1,78 @@
+<view class="tool-bar">
+    <view hover-class="btn-hover" class="btn btn-setting" bindtap="toggleConfig">设置</view>
+    <view class="main">
+        <view class="counter clock">{{~~(clock.time / 1000)}}</view>
+        <view  wx:if="{{game.gameStatus==='INITED'}}" hover-class="btn-init-hover" class="btn-init" bindtap="resetGame">😳</view>
+        <view  wx:if="{{game.gameStatus==='CONTINUE'}}" hover-class="btn-init-hover" class="btn-init" bindtap="resetGame">😤</view>
+        <view  wx:if="{{game.gameStatus==='FAILED'}}" hover-class="btn-init-hover" class="btn-init" bindtap="resetGame">😭</view>
+        <view  wx:if="{{game.gameStatus==='WIN'}}" hover-class="btn-init-hover" class="btn-init" bindtap="resetGame">🎉</view>
+        <view class="counter mine-count">{{game.mineCount - game.markCount}}</view>
+    </view>
+    <view hover-class="btn-hover" class="btn btn-record" bindtap="showBlackboard">记录</view>
+</view>
+
+<view class="land">
+    <view class="row"
+          wx:for="{{game.blocks}}"
+          wx:for-item="row"
+          wx:for-index="rowIndex"
+          wx:key="{{forIndex}}"
+          >
+        <Block
+            wx:for="{{row}}"
+            wx:for-item="block"
+            wx:for-index="blockIndex"
+            block="{{block}}"
+            wx:key="{{blockIndex}}"
+            x="{{rowIndex}}"
+            y="{{blockIndex}}"
+            longTapToTriggerDoubleClick="{{markActionType!=='DOUBLE_CLICK'}}"
+            bind:click="dig"
+            bind:double-click="markOrOpenAround"
+        ></Block>
+    </view>
+</view>
+
+<view class="blackboard" wx:if="{{showBlackboard}}">
+    
+    <view class="blackboard-content title">📜最佳成绩📜</view>
+    <view class="blackboard-content" wx:if="{{bestTime.EASY===9999}}">🤞🏼简单难度尚未通关</view>
+    <view class="blackboard-content" wx:if="{{bestTime.EASY!==9999}}">🤞🏼简单<text class="num">{{bestTime.EASY}}</text>秒</view>
+    <view class="blackboard-content" wx:if="{{bestTime.MID===9999}}">✌🏼中等难度尚未通关</view>
+    <view class="blackboard-content" wx:if="{{bestTime.MID!==9999}}">✌🏼中等<text class="num">{{bestTime.MID}}</text>秒</view>
+    <view class="blackboard-content" wx:if="{{bestTime.HARD===9999}}">🤘🏼困难难度尚未通关</view>
+    <view class="blackboard-content" wx:if="{{bestTime.HARD!==9999}}">🤘🏼困难<text class="num">{{bestTime.HARD}}</text>秒</view>
+    <!-- <view class="blackboard-content">🗓从<text class="num">{{firstPlayTime}}</text>起</view> -->
+    <view class="blackboard-content">玩了<text class="num">{{playCount}}</text>局，胜利次数<text class="num">{{winCount}}</text>🎉</view>
+    <!-- <view class="blackboard-content"></view> -->
+    <view class="blackboard-content">🥄挖了<text class="num">{{openCorrectCount}}</text>个格子</view>
+   
+    <block wx:if="{{game.gameStatus!=='CONTINUE'}}">
+        <view class="blackboard-content">💡标对了<text class="num">{{markCorrectCount}}</text>个💣的同时</view>
+        <view class="blackboard-content">💊也标错了<text class="num">{{markWrongCount}}</text>个💣</view>
+    </block>
+    <view class="btn-close" hover-class="btn-close-hover" bindtap="hideBlackboard"></view>
+    <view class="btn-share">分享<button class="btn-real-share" open-type="share">哈哈哈</button></view>
+</view>
+
+<view class="config" wx:if="{{showConfig}}">
+    <view class="config-label">选择难度</view>
+    <view class="config-item {{level==='EASY'?'config-item-selected':''}}" data-level="EASY" bindtap="setLevel">简单</view>
+    <view class="config-item {{level==='MID'?'config-item-selected':''}}" data-level="MID" bindtap="setLevel">中等</view>
+    <view class="config-item {{level==='HARD'?'config-item-selected':''}}" data-level="HARD" bindtap="setLevel">困难</view>
+    
+    <view class="config-label">标记方式？</view>
+    <view class="config-item {{markActionType==='DOUBLE_CLICK'?'config-item-selected':''}}" data-type="DOUBLE_CLICK" bindtap="setMarkActionType">双击</view>
+    <view class="config-item {{markActionType==='LONG_TAP'?'config-item-selected':''}}" data-type="LONG_TAP" bindtap="setMarkActionType">长按</view>
+
+    <block wx:if="{{false}}">
+        <view class="config-label">声音</view>
+        <view class="config-item config-item-selected">开启</view>
+        <view class="config-item">关闭</view>
+    </block>
+    
+    <view class="config-btn-confirm" bindtap="toggleConfig">确定</view>
+</view>
+
+
+<audio id="audio"></audio>

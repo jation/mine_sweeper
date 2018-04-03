@@ -1,0 +1,68 @@
+/*地雷阵地每一块*/
+.block{
+    width:80rpx;
+    height:80rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 50rpx;
+    font-weight: bold;
+    border: 4px solid;
+    border-top-color: #fff;
+    border-right-color: rgb(100,100,100);
+    border-bottom-color: rgb(100,100,100);
+    border-left-color:  rgb(230,230,230);
+}
+.block.empty{
+    background:#f2f2f2;
+    border:1px solid #999;
+}
+.block.num{
+    background:rgb(191, 203, 226);
+    color:blue;
+    border:1px solid #999;
+}
+.block.num.num-1{
+    color:blue;
+    font-size: 40rpx;
+}
+.block.num.num-2{
+    color: green;
+    font-size: 40rpx;
+}
+.block.num.num-3{
+    color: red;
+    font-size: 40rpx;
+}
+.block.num.num-4{
+    color: rgb(3,12,126);
+    font-size: 40rpx;
+}
+.block.num.num-5{
+    color: rgb(127,4,10);
+    font-size: 40rpx;
+}
+.block.num.num-6{
+    color: rgb(17,128,128);
+    font-size: 40rpx;
+}
+.block.num.num-7{
+    color: black;
+    font-size: 40rpx;
+}
+.block.num.num-8{
+    color: rgb(128,128,128);
+    font-size: 40rpx;
+}
+
+.block.marked{
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhBAMAAADMnc9JAAAAD1BMVEXz2tr///8AAAD7AAf/AA6Fn9AVAAABJklEQVR42u3a3WnEMBRE4Xs72Ekq2O0gpIX0X1NMFiFwcESs9WDJ5xTgj3nwj8BBRERERERERIOUWneLY9Pv4tBSMo+UzCNT+nsk4jDi+2fpa+kDEXFbqVlEucW0i3KLiTiN+GPUEBERVXKJaRflFtMuCnEasVwaEREREXFU8Qpvq9nF1Pzfq2Xk1OeOS5zmECcTy02COK4YfjHtYvjFtIqVRYxARNwQ1z2e3RFHEsMvpl0Mv5gdYn+IS4iIiJOJ28/VZ68X1RBfPjRboo6eWMWDRmZbFOIY4ttjO0TES4mpVQ2x/6d29YjqntgW+0eqT9SOiZ3iDfEs4kLs646IiIiIiIiIiIiIOKa4P8SziKHO4t+la2LNNbGWfROJiIiIiIiI6HR9A8B9O+4VtukOAAAAAElFTkSuQmCC);
+    background-size: 80rpx auto;
+    border:1px solid #999;
+}
+.block-not-open{
+    background:rgb(200,200,200);
+}

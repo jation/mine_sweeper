@@ -1,0 +1,279 @@
+Page{
+    background:#f2f2f2;
+}
+/*顶部状态栏*/
+.tool-bar{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16rpx;
+    margin-bottom: 16rpx;
+    border-bottom: 8rpx solid gray;
+}
+/*设置和记录按钮*/
+.btn{
+    display: inline-block;
+    width: 160rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(200,200,200);
+    color:#000;
+    box-sizing: border-box;
+    border: 4px solid;
+    border-top-color: #fff;
+    border-right-color: rgb(100,100,100);
+    border-bottom-color: rgb(100,100,100);
+    border-left-color:  rgb(230,230,230);
+}
+.btn-hover{
+    background: #aaa !important;
+    border-bottom-color: #fff;
+    border-left-color: rgb(100,100,100);
+    border-top-color: rgb(100,100,100);
+    border-right-color:  rgb(230,230,230);
+}
+/*顶部状态栏的中间部分容器，包括了 计时器、重置键、雷计数器*/
+.main{
+    flex:1;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/*重置按钮*/
+.btn-init{
+    width: 80rpx;
+    height: 80rpx;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background:#ccc;
+    font-size: 60rpx;
+    border: 4px solid;
+    border-top-color: #fff;
+    border-right-color: rgb(100,100,100);
+    border-bottom-color: rgb(100,100,100);
+    border-left-color:  rgb(230,230,230);
+}
+.btn-init-hover{
+    background: #aaa !important;
+    border-bottom-color: #fff;
+    border-left-color: rgb(100,100,100);
+    border-top-color: rgb(100,100,100);
+    border-right-color:  rgb(230,230,230);
+}
+/*计数器：时钟、雷标记计数器*/
+.counter{
+    height:80rpx;
+    width: 160rpx;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+
+/*地雷阵地*/
+.land{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60rpx;
+    width:100%;
+    overflow: scroll;
+}
+/*地雷阵地的每一行*/
+.row{
+    font-size:0;
+    display:flex;
+    flex-direction: row;
+}
+/*地雷阵地每一块*/
+.block{
+    width:80rpx;
+    height:80rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 50rpx;
+    font-weight: bold;
+    border: 4px solid;
+    border-top-color: #fff;
+    border-right-color: rgb(100,100,100);
+    border-bottom-color: rgb(100,100,100);
+    border-left-color:  rgb(230,230,230);
+}
+.block.empty{
+    background:#f2f2f2;
+    border:1px solid #999;
+}
+.block.num{
+    background:rgb(191, 203, 226);
+    color:blue;
+    border:1px solid #999;
+}
+.block.num.num-1{
+    color:blue;
+    font-size: 40rpx;
+}
+.block.num.num-2{
+    color: green;
+    font-size: 40rpx;
+}
+.block.num.num-3{
+    color: red;
+    font-size: 40rpx;
+}
+.block.num.num-4{
+    color: rgb(3,12,126);
+    font-size: 40rpx;
+}
+.block.num.num-5{
+    color: rgb(127,4,10);
+    font-size: 40rpx;
+}
+.block.num.num-6{
+    color: rgb(17,128,128);
+    font-size: 40rpx;
+}
+.block.num.num-7{
+    color: black;
+    font-size: 40rpx;
+}
+.block.num.num-8{
+    color: rgb(128,128,128);
+    font-size: 40rpx;
+}
+
+.block.marked{
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhBAMAAADMnc9JAAAAD1BMVEXz2tr///8AAAD7AAf/AA6Fn9AVAAABJklEQVR42u3a3WnEMBRE4Xs72Ekq2O0gpIX0X1NMFiFwcESs9WDJ5xTgj3nwj8BBRERERERERIOUWneLY9Pv4tBSMo+UzCNT+nsk4jDi+2fpa+kDEXFbqVlEucW0i3KLiTiN+GPUEBERVXKJaRflFtMuCnEasVwaEREREXFU8Qpvq9nF1Pzfq2Xk1OeOS5zmECcTy02COK4YfjHtYvjFtIqVRYxARNwQ1z2e3RFHEsMvpl0Mv5gdYn+IS4iIiJOJ28/VZ68X1RBfPjRboo6eWMWDRmZbFOIY4ttjO0TES4mpVQ2x/6d29YjqntgW+0eqT9SOiZ3iDfEs4kLs646IiIiIiIiIiIiIOKa4P8SziKHO4t+la2LNNbGWfROJiIiIiIiI6HR9A8B9O+4VtukOAAAAAElFTkSuQmCC);
+    background-size: 80rpx auto;
+    border:1px solid #999;
+}
+.block-not-open{
+    background:rgb(200,200,200);
+}
+
+.blackboard, .config{
+    position: absolute;
+    left: 50%;
+    top: 120rpx;
+    transform: translate(-50%, 0);
+    width:500rpx;
+    padding:60rpx 40rpx;
+    padding-top: 20rpx;
+    border-radius: 20rpx;
+    background:rgb(57, 87, 67);
+    text-align: left;
+    font-size: 36rpx;
+    color:#fff;
+    border:10px solid rgb(215,174,115);
+}
+.blackboard .blackboard-content.title{
+    margin-top:20rpx;
+    font-size: 46rpx;
+}
+.blackboard .btn-close{
+    position: absolute;
+    right: 20rpx;
+    top: 20rpx;
+    width: 64rpx;
+    height: 64rpx;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABgElEQVRYR8WX/U0DMQzFnzdgBDYoI7QTlBHKBjAJbEC7AUwAGwAjsAEbGFm6VLlrEn9VuvvvTrq8nx3n2SGs/NDK+jgDMPMNgFcA9wDeADwQ0d81AJn5FsDztPYRwFNZuwYQ0X0l+A1gl4Vg5jsAHwAkwPKciOggLzUAN6JNQXTEReaXiCQrM4BlBgpPCGIgLus2MyAp+gSwyWZCEf8BsL2oARGdCjEF4RGfbUGJOgPhFW8CRDMREe8CeCGi4kMAKwQAOU7Lc152dFZwLVNTrdhQEwJQm4xZXM2AsTBbgamRl5/UDAQgzOLmDDggXOIRgFZjqbfAbdueLdDEQ73DBKCc81YRmjOhAhhMRgDCDWwIYBDfTuGHG1gXwCJeWqrBrLqTVRPAI248ot2auACIiGcgZgAZ8ShEPZRKU/nKNJYIxGgsd3W1pRkohflORHL/UMdyt7fXIAMI01ieEle2ozuWv8jIPI3nj9lb0QJCrmTST8S0zmurVtwy+mt+Wx3gH59oFDBUkTnLAAAAAElFTkSuQmCC);
+    background-size: 32rpx auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+}
+.blackboard .btn-close-hover{
+    opacity: 0.5;
+}
+.blackboard .btn-real-share{
+    opacity: 0;
+    position: absolute;
+    left:0; bottom:0; right:0; top:0;
+}
+.blackboard .btn-share{
+    position: absolute;
+    bottom: -140rpx;
+    left: 50%;
+    margin-left: -100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 200rpx;
+    padding: 16rpx 32rpx;
+    border: 16rpx solid rgb(215,174,115);
+    border-radius: 8rpx;
+    background:rgb(57, 87, 67);
+    color: #fff;
+    animation: shake 50ms linear infinite;
+}
+
+@keyframes shake{
+    0%,100%{ transform: rotate(0deg) }
+    33.33%{ transform: rotate(-3deg) }
+    66.66%{ transform: rotate(3deg) }
+}
+
+.blackboard .blackboard-content .num{
+    font-family: sans-serif;
+    font-size: 50rpx;
+    padding-left: 16rpx;
+    padding-right:16rpx;
+}
+.config{
+    padding-bottom: 120rpx;
+}
+.config-btn-confirm{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160rpx;
+    padding: 8rpx;
+    border-radius: 8rpx;
+    border: 1px solid  #fff;
+    box-sizing: border-box;
+    left: 50%;
+    margin-left: -80rpx;
+    bottom: 16rpx;
+    color:#fff;
+}
+.config-label{
+    margin-bottom: 8rpx;
+    margin-top: 8rpx;
+}
+
+.config-item{
+    position: relative;
+    display: inline-block;
+    font-size: 32rpx;
+    padding-left: 40rpx;
+    padding-right: 40rpx;
+    box-sizing: border-box;
+}
+.config-item::before{
+    content: ' ';
+    position: absolute;
+    width: 32rpx;
+    height: 32rpx;
+    border:1rpx solid #fff;
+    box-sizing: border-box;
+    display: inline-block;
+    left: 0;
+    top: 8rpx;
+}
+.config-item-selected{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA/0lEQVRYR+2W2w3CMAxF750ARmEDYAIYAUZgAmASGAE2gA0YgRWYwMiolSLIw0kV9YP4pz+Vz+mN65YYuTgyH02gJfAfCYjIGsAewBPAjqReP1U9ARHZADg5r/uVpArVF/DAFXonuaguEIC/ACxIPqoKWOFVZiAH/iMgIrNuYKYAjiTPOd+KXLhP4AJg5UC3VokSuE/gBmD+9dRJiVJ46AhUYmKVGAL3DmE3ByaJAFz7Lklqj2R5N6FFIgJPHplrFVzFMYmugbte+55Z8OQeiEj4os2GJwX0BqNEEdwkYJAohpsFIhKD4FkCjkS/ng8kdXMOquo/JCm7JtASaAm8Ac6vgSFA/WGlAAAAAElFTkSuQmCC);
+    background-repeat:  no-repeat;
+    background-size: 32rpx auto;
+    background-position: left center;
+}

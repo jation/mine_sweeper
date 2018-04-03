@@ -1,0 +1,16 @@
+<view class="block {{block.open?'':'block-not-open'}} {{(block.open && block.tipsCount===0)?'empty':''}} {{(block.open && block.tipsCount!==0)?'num':''}} {{block.marked?'marked':''}} {{'num-'+block.tipsCount}}"
+      data-x="{{x}}"
+      data-y="{{y}}"
+      data-count="{{(block.tipsCount)}}"
+      bindtap="tap"
+      bindlongpress="longTap"
+>
+    <block wx:if="{{block.open}}">
+        <text wx:if="{{block.type==='MINE' && !block.exploded}}">💣</text>
+        <text wx:if="{{block.type==='MINE' && block.exploded}}">💥</text>
+        <text wx:if="{{block.type!=='MINE'}}">{{block.tipsCount>0 ? block.tipsCount:' '}}</text>
+    </block>
+    <block wx:if="{{!block.open}}">
+        <text class="block-not-open"></text>
+    </block>
+</view>
