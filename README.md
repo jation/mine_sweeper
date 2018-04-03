@@ -2,7 +2,7 @@
 
 两天时间写的，可惜提交不过审，开源出来算了，有兴趣的人了解一下。代码注释非常详细，有空再写文章。我都这么说了，应该不会有空了……
 
-![截图](https://7xkfnj.com1.z0.glb.clouddn.com/githubimg/WechatIMG59.jpeg)
+![截图](http://7xkfnj.com1.z0.glb.clouddn.com/githubimg/WechatIMG59.jpeg)
 
 
 ## 功能
