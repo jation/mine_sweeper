@@ -15,32 +15,47 @@ const audioHelper = {
         ctx = wx.createInnerAudioContext('audio');
         ctx.src = AUDIO_SRC.DIG;
         ctx.play();
+        ctx.onEnded = destoryAudioContext;
     },
     mark(){ 
         ctx = wx.createInnerAudioContext('audio');
         ctx.src = AUDIO_SRC.MARK;
         ctx.play();    
+        ctx.onEnded = destoryAudioContext;
     },
     newGame(){
         ctx = wx.createInnerAudioContext('audio');
         ctx.src = AUDIO_SRC.NEW_GAME;
         ctx.play();
+        ctx.onEnded = destoryAudioContext;
     },
     digAround(){ 
         ctx = wx.createInnerAudioContext('audio');
         ctx.src = AUDIO_SRC.DIG_AROUND;
         ctx.play();
+        ctx.onEnded = destoryAudioContext;
      },
     failed(){
         ctx = wx.createInnerAudioContext('audio');
         ctx.src = AUDIO_SRC.FAILED;
         ctx.play(); 
+        ctx.onEnded = destoryAudioContext;
     },
     win(){
         ctx = wx.createInnerAudioContext('audio');
         ctx.src = AUDIO_SRC.WIN;
         ctx.play();
+        ctx.onEnded = destoryAudioContext;
     },
+}
+
+//好像是因为这里内存泄漏了加上destroy一下..
+function destoryAudioContext() {
+   try { 
+        ctx.destroy(); 
+   } catch(e) {
+        console.error(e) 
+   } 
 }
 
 export default audioHelper;
